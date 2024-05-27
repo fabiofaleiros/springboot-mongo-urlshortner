@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
 @Document(collection = "urls")
-public class Url {
+public class UrlEntity {
 
     @Id
     private String id;
@@ -18,10 +18,10 @@ public class Url {
     @Indexed(expireAfterSeconds = 0)
     private LocalDateTime expireAt;
 
-    public Url() {
+    public UrlEntity() {
     }
 
-    public Url(LocalDateTime expireAt, String id, String fullUrl) {
+    public UrlEntity(LocalDateTime expireAt, String id, String fullUrl) {
         this.expireAt = expireAt;
         this.id = id;
         this.fullUrl = fullUrl;
