@@ -40,4 +40,19 @@ public class UrlShortnerController {
 
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<Void> redirect(@PathVariable("id") String id) {
+
+        var url = urlRepository.findById(id);
+
+        if (url.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(URI.create(url.get().getFullUrl()));
+
+        return ResponseEntity.status(HttpStatus.FOUND).headers(headers).build();
+    }
+
 }
