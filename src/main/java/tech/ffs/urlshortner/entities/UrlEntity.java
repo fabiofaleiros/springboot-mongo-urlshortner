@@ -1,4 +1,4 @@
-package entities;
+package tech.ffs.urlshortner.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -21,7 +21,7 @@ public class UrlEntity {
     public UrlEntity() {
     }
 
-    public UrlEntity(LocalDateTime expireAt, String id, String fullUrl) {
+    public UrlEntity(String id, String fullUrl, LocalDateTime expireAt) {
         this.expireAt = expireAt;
         this.id = id;
         this.fullUrl = fullUrl;
